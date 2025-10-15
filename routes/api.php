@@ -8,4 +8,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', fn (Request $request) => $request->user());
 
     Route::apiResource('/translations', TranslationController::class);
+    Route::get('/translations/export/{locale}', [TranslationController::class, 'export']);
 });

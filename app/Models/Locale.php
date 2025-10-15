@@ -21,10 +21,18 @@ class Locale extends Model
     ];
 
     /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'key';
+    }
+
+    /**
      * Get translations for the locale.
      */
     public function translations()
     {
-        return $this->hasMany(Translation::class);
+        return $this->hasMany(Translation::class, 'locale', 'code');
     }
 }

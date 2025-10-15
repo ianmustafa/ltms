@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('locale_id');
+            $table->string('locale');
             $table->string('key', 191);
             $table->text('value');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['locale_id', 'key']);
+            $table->unique(['locale', 'key']);
             $table->index('key');
             $table->fullText(['value', 'key']);
 
-            $table->foreign('locale_id')->references('id')->on('locales')->cascadeOnDelete();
+            $table->foreign('locale')->references('code')->on('locales')->cascadeOnDelete();
         });
     }
 

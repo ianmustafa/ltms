@@ -30,10 +30,7 @@ class TranslationFactory extends Factory
 
         return [
             'key' => substr($key, 0, 191),
-            'locale_id' => Locale::inRandomOrder()->value('id') ?? 1,
             'value' => $this->faker->sentence(12),
-            'created_at' => new Carbon(),
-            'updated_at' => new Carbon(),
         ];
     }
 }
